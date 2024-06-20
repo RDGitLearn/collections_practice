@@ -53,10 +53,67 @@ public class ArrayListRevision {
           //2. Using Iterator
           //3. Using Constructor
         //4. through serialization
-        //5. through clone
+        //5. through clone  " Need to test"
+        //6. Collections.copy();
 
         List<Student> studentList = new ArrayList<>(students);
+        Collections.copy(studentList,students);  //size of  studentList must be >= students list size
+        System.out.println("Before Shuffle " + studentList);
 
+       // Write a Java program to shuffle elements in an array list.
+        Collections.shuffle(studentList);
+        System.out.println("After Shuffle " + studentList);
 
+        //Write a Java program to reverse elements in an array list.
+        Collections.reverse(studentList);
+        System.out.println("Elements of Student List are reversed "+ studentList);
+
+        //Write a Java program to extract a portion of an array list.
+        List<Student> studentsSubList = studentList.subList(1,3);
+        System.out.println("Sub List of Students "+ studentsSubList);
+
+        //Write a Java program to compare two array lists.
+        students = new ArrayList<>(studentList);
+        //Write a Java program to compare two array lists.
+        System.out.println(studentList.equals(students)); //Equals check if all the elements are in correct order.
+
+        //Write a Java program that swaps two elements in an array list.
+        System.out.println("-".repeat(30));
+        System.out.println("Before Swapping : "+ studentList);
+        Collections.swap(studentList,1,3);
+        System.out.println("After Swapping : "+ studentList);
+
+        //Write a Java program to join two array lists.
+        System.out.println("Student sub list before adding "+ studentsSubList);
+        studentList.addAll(studentsSubList);
+        System.out.println(studentList);
+
+        //Write a Java program to clone an array list to another array list.
+        ArrayList<Student> clonedList = (ArrayList<Student>) ((ArrayList<Student>) studentList).clone();
+        System.out.println("Clonned List : " + clonedList);
+        //Write a Java program to empty an array list.
+        clonedList.clear();
+        System.out.println("Clonned List after Clear " + clonedList);
+
+        //Write a Java program to test whether an array list is empty or not.
+        System.out.println("Clonned List to check empty or not : "+clonedList.isEmpty());
+        System.out.println("Student List to check empty or not : "+ studentList.isEmpty());
+
+        //Write a Java program for trimming the capacity of an array list.
+        System.out.println("Clonned List Size :" + clonedList.size());
+        clonedList.trimToSize();
+        System.out.println("Clonned List Capacity : "+ clonedList.size());
+
+        //Write a Java program to increase an array list size.
+        // There is no method in ArrayList to check the Capacity of ArrayList
+        clonedList.ensureCapacity(20);
+        System.out.println("Clonned List size after capacity :" + clonedList.size());
+
+        //Write a Java program to replace the second element of an ArrayList with the specified element
+        studentList.remove(1);
+        studentList.add(1,new Student("S10","10"));
+        System.out.println("Student is replaced at second position"+ studentList);
+
+        students.set(1,new Student("S11","11"));
     }
 }
